@@ -14,7 +14,7 @@ meet2code - веб-приложение для поиска коллег по р
 - установить архив с проектом
 - запустить следующие команды в PowerShell:
 ```
-py install -r requirements.txt
+pip install -r requirements.txt
 py manage.py makemigrations
 py manage.py migrate
 py manage.py createsuperuser
