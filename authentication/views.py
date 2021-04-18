@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 
 def index(request):
     return render(request, 'authentication/index.html')
 
 
-def register(request):
+def register_request(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
 
@@ -22,3 +23,9 @@ def register(request):
         form = UserCreationForm()
     context = {'form': form}
     return render(request, 'registration/register.html', context)
+
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return redirect('index')
