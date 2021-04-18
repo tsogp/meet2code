@@ -27,10 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "authentication.Account"
 
 # Application definition
 
 INSTALLED_APPS = [
+    'chat',
+    'channels',
     'authentication',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,3 +124,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+ASGI_APPLICATION = 'meet2code.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}

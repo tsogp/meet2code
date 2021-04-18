@@ -9,13 +9,20 @@
 <body>
     <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
+        {% for field in registration_form %}
+        <p>
+            {{ field.label_tag }}
+            {{ field }}
 
-        {% if form.errors %}
-        <p>There are errors in the form!</p>
-        {% endif %}
+            {% if field.help_text %}
+            <small style="color: grey;">{{ filed.help_text }}</small>
+            {% endif %}
 
-        {{ form }}
-
-        <input type="submit" value="Register">
+            {% for error in field.errors %}
+        <p style="color: red;">{{ error }}</p>
+        {% endfor %}
+        </p>
+        {% endfor %}
+        <button type="submit">Register</button>
     </form>
 </body>

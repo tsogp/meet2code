@@ -17,7 +17,7 @@
 
     <form method='post' action="{% url 'login' %}">
         {% csrf_token %}
-        <p>Username: {{ form.username }}</p>
+        <p>Email: {{ form.username }}</p>
         <p>Password: {{ form.password }}</p>
 
         <input type="submit"=value="login">

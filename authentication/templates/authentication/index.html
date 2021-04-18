@@ -10,6 +10,7 @@
     {% if user.is_authenticated %}
     <h2> Your name is: {{ user.username }}</h2>
     <button><a href="/logout">Logout</a></button>
+    <button><a href="chat">Chat</a></button>
     {% else %}
     <h2>You're not logged in</h2>
     <button><a href="register">Register</a></button>
