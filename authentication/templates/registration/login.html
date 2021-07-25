@@ -1,27 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
+{% load static %}
 
-<body>
-    {% if form.errors %}
-    <p>There's something wrong with what you entered!</p>
-    {% endif %}
+<style>
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+    }
+    .login {
+        font-family: -apple-system, Roboto Bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        text-align: left;
+    }
+    </style>
 
-    {% if next %}
-    <p>Hey, you can't access that page!</p>
-    {% endif %}
+<div class='login row'>
+    <h2>Log in</h2>
+    <form action="{% url 'login' %}" method="post">
+        {% include 'snippets/messages.html' %}
 
-    <form method='post' action="{% url 'login' %}">
         {% csrf_token %}
-        <p>Email: {{ form.username }}</p>
-        <p>Password: {{ form.password }}</p>
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }}<br>
+                {{ field }}
+                <p class="help">{{ field.help_text }}</p>
+                
+            </div>
+            {% endfor %}
+        
 
-        <input type="submit"=value="login">
-        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit">Log in</button>
+        <button type="submit">
+            <a style="color: inherit; text-decoration: none;" href="/register">Register</a>
+        </button><br><br>
 
+        <h5>
+            Forgot your password?
+        </h5>
+        <button type="submit">
+            <a style="color: inherit; text-decoration: none;" href="../password_reset">Reset Password</a>
+        </button>
     </form>
-</body>
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% if messages %}
+{% for message in messages %}
+
+<div style='border-color: green; border-radius: 2;' class="ui {{message.tags}} message">
+    {{message}}
+</div>
+
+{% endfor %}
+
+{% endif %}

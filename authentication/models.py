@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class AccountManager(BaseUserManager):
 
@@ -37,7 +38,7 @@ def get_profile_image_filepath(self):
 
 
 def get_default_profile_image():
-    return "media_cdn/profile_image.png"
+    return "profile_image.png"
 
 
 class Account(AbstractBaseUser):
@@ -56,6 +57,7 @@ class Account(AbstractBaseUser):
     telegram = models.CharField(max_length=30, default='')
     vk = models.CharField(max_length=30, default='')
     hide_email = models.BooleanField(default=True)
+    is_email_verified = models.BooleanField(default=False)
 
     objects = AccountManager()
 
@@ -70,3 +72,4 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+

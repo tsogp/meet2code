@@ -80,18 +80,14 @@ WSGI_APPLICATION = 'meet2code.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DB_NAME = "meet2code"
-DB_USER = "admin"
-DB_PASSWORD = 'mistablue88'
+# DB_NAME = "meet2code"
+# DB_USER = "admin"
+# DB_PASSWORD = 'mistablue88'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
@@ -153,6 +149,13 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'pavkinpav1@gmail.com'
+EMAIL_HOST_PASSWORD = 'ieatpee123'
+EMAIL_PORT = 587
 
 ASGI_APPLICATION = 'meet2code.asgi.application'
 

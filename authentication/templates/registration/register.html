@@ -1,28 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
+{% block content %}
 
-<body>
-    <form method="post" action="{% url 'register' %}">
-        {% csrf_token %}
-        {% for field in registration_form %}
-        <p>
-            {{ field.label_tag }}
-            {{ field }}
+<style>
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.register {
+    font-family: -apple-system, Roboto Bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+</style>
 
-            {% if field.help_text %}
-            <small style="color: grey;">{{ filed.help_text }}</small>
-            {% endif %}
+<div class='register'>
 
-            {% for error in field.errors %}
-        <p style="color: red;">{{ error }}</p>
-        {% endfor %}
-        </p>
-        {% endfor %}
-        <button type="submit">Register</button>
-    </form>
-</body>
+<form method="post" action="{% url 'register' %}">
+<h2>Sign up</h2>
+
+{% include 'snippets/messages.html' %}
+
+{% csrf_token %}
+{% for field in registration_form %}
+    <p>
+    {{ field.label_tag }}<br>
+    {{ field }}
+    {% if field.help_text %}
+        <small style="display: gray">{{ field.help_text }}</small>
+    {% endif %}
+    {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}
+    </p>
+    {% endfor %}
+<button type="submit">Sign up</button>
+<button type="submit"><a style="color: inherit; text-decoration: none;" href="/login">Log In</a></button>
+</form>
+</div>
+{% endblock %}
