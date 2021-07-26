@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chat/', include('chat.urls')),
     path('', include('authentication.urls')),
-    path('', include('django.contrib.auth.urls')),
+    #path('accounts/', include('django.contrib.auth.urls')),
     #path('', home_screen_view, name="home")
 ]
 

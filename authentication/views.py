@@ -52,7 +52,6 @@ def login_request(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            form.save()
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user = authenticate(email=email, password=password)
@@ -67,10 +66,12 @@ def login_request(request):
                     login(request, user)
                     return redirect('index')
                 else:
-                    return HttpResponse('No such account detected.')
+                    messages.add_message(request, messages.ERROR,
+                                 'Your account is disabled.')
+                    return render(request, 'registration/login.html')
     else:
         form = LoginForm()
-    return render(request, 'registration/login.html')
+    return render(request, 'registration/login.html', {'form': form})
 
 def logout_request(request):
     logout(request)
@@ -100,7 +101,7 @@ def activate_user(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = Account.objects.get(pk=uid)
-    except Exception as e:
+    except:
         user = None
     
     if user and generate_token.check_token(user, token):

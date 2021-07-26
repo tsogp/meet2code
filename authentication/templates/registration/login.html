@@ -29,14 +29,19 @@
         {% csrf_token %}
         {% for field in form %}
             <div class="fieldWrapper">
-                {{ field.errors }}
                 {{ field.label_tag }}<br>
                 {{ field }}
-                <p class="help">{{ field.help_text }}</p>
-                
+
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
             </div>
-            {% endfor %}
+        {% endfor %}
+        <br>
         
+        {% if form.errors %}
+            <p style="color: red">Your email and password didn't match. Please try again.</p>
+        {% endif %}
 
         <button type="submit">Log in</button>
         <button type="submit">
