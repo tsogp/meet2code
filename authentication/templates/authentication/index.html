@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <h1>This is the index page!</h1>
+    <h1 style="margin-left: auto;
+    margin-right: auto;
+    width: 6em">This is the index page!</h1>
     {% if user.is_authenticated %}
     <h2> Your name is: {{ user.username }}</h2>
     <button><a href="/logout">Logout</a></button>
