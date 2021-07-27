@@ -8,18 +8,22 @@
     <meta charset="UTF-8">
 </head>
 
-<body>
-    <h1 style="margin-left: auto;
-    margin-right: auto;
-    width: 6em">This is the index page!</h1>
+<body style="background-color: rgb(213, 236, 255); text-align: center;">
+    <h1>This is the index page!</h1>
     {% if user.is_authenticated %}
     <h2> Your name is: {{ user.username }}</h2>
     <button><a href="/logout">Logout</a></button>
     <button><a href="chat">Chat</a></button>
     {% else %}
-    <h2>You're not logged in</h2>
-    <button><a href="register">Register</a></button>
-    <button><a href="login">Log In</a></button>
+    <br><br><br><br><br><br>
+    <div style="background-color: rgb(154, 180, 250); width: 90ex; height: 50ex; text-align: center; border-style: solid; border-width: thick; border-radius: 20px; border-color: rgb(3, 3, 29);">
+        <br><br>
+        <h2 style="color: white;">You're not logged in</h2>
+        <br><br><br>
+        <button style="min-width: 30ex; min-height: 10ex; border-style: solid; border-width: thin; border-radius: 20px; border-color: rgb(3, 3, 29);"><a href="register">Register</a></button>
+        <button style="min-width: 30ex; min-height: 10ex; border-style: solid; border-width: thin; border-radius: 20px; border-color: rgb(3, 3, 29);" type="button" class="btn btn-light"><a href="login">Log In</a></button>
+    </div>
+
     {% endif %}
 </body>
 {% endblock %} 
