@@ -1,8 +1,8 @@
 {% if messages %}
 {% for message in messages %}
 
-<div style='border-color: green; border-radius: 2;' class="ui {{message.tags}} message">
-    {{message}}
+<div style='border-color: green; border-radius: 50px;' class="ui {{message.tags}} message">
+    <p style='color: red;'>{{message}}</p>
 </div>
 
 {% endfor %}

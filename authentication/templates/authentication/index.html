@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -19,5 +20,6 @@
     <button><a href="register">Register</a></button>
     <button><a href="login">Log In</a></button>
     {% endif %}
+    {% include 'snippets/messages.html' %}
 </body>
 {% endblock %} 

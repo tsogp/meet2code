@@ -38,7 +38,7 @@ def get_profile_image_filepath(self):
 
 
 def get_default_profile_image():
-    return "profile_image.png"
+    return "media_cdn/profile_image.png"
 
 
 class Account(AbstractBaseUser):

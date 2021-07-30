@@ -56,11 +56,15 @@ def login_request(request):
             password = form.cleaned_data['password']
             user = authenticate(email=email, password=password)
 
-            if user is not None:
+            if user is None:
+                messages.add_message(request, messages.ERROR,
+                    'There are mistakes in the form.')
+                return redirect('login')
+            else:
                 if not user.is_email_verified:
                     messages.add_message(request, messages.ERROR,
                                  'Email is not verified, please check your email inbox')
-                    return render(request, 'registration/login.html')
+                    return redirect('login')
 
                 if user.is_active:
                     login(request, user)
@@ -68,7 +72,7 @@ def login_request(request):
                 else:
                     messages.add_message(request, messages.ERROR,
                                  'Your account is disabled.')
-                    return render(request, 'registration/login.html')
+                    return redirect('login')
     else:
         form = LoginForm()
     return render(request, 'registration/login.html', {'form': form})
