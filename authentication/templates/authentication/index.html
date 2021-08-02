@@ -2,19 +2,13 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-</head>
-
-<body style="background-color: rgb(213, 236, 255); text-align: center;">
+<body style="background-color: rgb(213, 236, 255); text-align: center; align-items: center; justify-content: center;">
     <h1>This is the index page!</h1>
     {% if user.is_authenticated %}
     <h2> Your name is: {{ user.username }}</h2>
     <button><a href="/logout">Logout</a></button>
     <button><a href="chat">Chat</a></button>
+    <img src="{{ user.Account.profile_image.url }}">
     {% else %}
     <br><br><br><br><br><br>
     <div style="background-color: rgb(154, 180, 250); width: 90ex; height: 50ex; text-align: center; border-style: solid; border-width: thick; border-radius: 20px; border-color: rgb(3, 3, 29);">
