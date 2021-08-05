@@ -12,16 +12,25 @@
         text-align: left;
     }
     .login {
-        font-family: -apple-system, Roboto Bold;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: left;
-        text-align: left;
+        background-color: #3B2E84;
+        width: 90ex; 
+        height: 50ex; 
+        text-align: center; 
+        border-style: solid; 
+        border-width: thick; 
+        border-radius: 20px; 
+        border-color: rgb(51, 51, 51);
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        margin:auto;
     }
     </style>
 
 <div class='login row'>
+    <br><br>
     <h2>Log in</h2>
     <form action="{% url 'login' %}" method="post">
         {% include 'snippets/messages.html' %}

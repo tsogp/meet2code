@@ -6,9 +6,27 @@
 
 <head>
     <meta charset="UTF-8">
+    <style>
+        .box {
+            background-color: #3B2E84;
+            width: 90ex; 
+            height: 50ex; 
+            text-align: center; 
+            border-style: solid; 
+            border-width: thick; 
+            border-radius: 20px; 
+            border-color: rgb(51, 51, 51);
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+        }
+    </style>
 </head>
 
-<body style="background-color: rgb(213, 236, 255); text-align: center;">
+<body>
     <h1>This is the index page!</h1>
     {% if user.is_authenticated %}
     <h2> Your name is: {{ user.username }}</h2>
@@ -16,7 +34,7 @@
     <button><a href="chat">Chat</a></button>
     {% else %}
     <br><br><br><br><br><br>
-    <div style="background-color: rgb(154, 180, 250); width: 90ex; height: 50ex; text-align: center; border-style: solid; border-width: thick; border-radius: 20px; border-color: rgb(3, 3, 29);">
+    <div class="box">
         <br><br>
         <h2 style="color: white;">You're not logged in</h2>
         <br><br><br>
