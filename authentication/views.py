@@ -52,25 +52,30 @@ def login_request(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            form.save()
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user = authenticate(email=email, password=password)
 
-            if user is not None:
+            if user is None:
+                messages.add_message(request, messages.ERROR,
+                    'There are mistakes in the form.')
+                return redirect('login')
+            else:
                 if not user.is_email_verified:
                     messages.add_message(request, messages.ERROR,
                                  'Email is not verified, please check your email inbox')
-                    return render(request, 'registration/login.html')
+                    return redirect('login')
 
                 if user.is_active:
                     login(request, user)
                     return redirect('index')
                 else:
-                    return HttpResponse('No such account detected.')
+                    messages.add_message(request, messages.ERROR,
+                                 'Your account is disabled.')
+                    return redirect('login')
     else:
         form = LoginForm()
-    return render(request, 'registration/login.html')
+    return render(request, 'registration/login.html', {'form': form})
 
 def logout_request(request):
     logout(request)
@@ -100,7 +105,7 @@ def activate_user(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = Account.objects.get(pk=uid)
-    except Exception as e:
+    except:
         user = None
     
     if user and generate_token.check_token(user, token):
