@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,11 +29,15 @@
 </head>
 
 <body>
+=======
+<body style="background-color: rgb(213, 236, 255); text-align: center; align-items: center; justify-content: center;">
+>>>>>>> 5d41cd67789f860774f084c8a534a2bd61037973
     <h1>This is the index page!</h1>
     {% if user.is_authenticated %}
     <h2> Your name is: {{ user.username }}</h2>
     <button><a href="/logout">Logout</a></button>
     <button><a href="chat">Chat</a></button>
+    <img src="{{ user.Account.profile_image.url }}">
     {% else %}
     <br><br><br><br><br><br>
     <div class="box">
@@ -43,5 +49,6 @@
     </div>
 
     {% endif %}
+    {% include 'snippets/messages.html' %}
 </body>
 {% endblock %} 
