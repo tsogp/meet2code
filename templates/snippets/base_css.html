@@ -1,21 +1,25 @@
+{% load static %}
+
 <style type="text/css">
     head {
         font-family: 'Courier New', Courier, monospace;
+        background-color: #444147;
         font-weight: 380;
     }
 
     footer {
         font-family: Roboto Bold;
         font-weight: 380;
-        background-color: black;
+        background-color: #212529;
         color: white;
         border-style: solid; 
         border-width: thin; 
-        border-color: white black black black;
+        border-color: #212529;
     }
 
     body {
-        background: url(image.jpg);
+        background: url({% static 'snippets/image.png' %});
+        background-color: #99caff;
         font-family: 'Courier New', Courier, monospace;
         font-weight: 380;
     }
