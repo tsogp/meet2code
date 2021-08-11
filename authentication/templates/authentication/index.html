@@ -11,8 +11,8 @@
     <style>
         .box {
             background-color: #212529;
-            width: 90ex; 
-            height: 50ex; 
+            width: 70ex; 
+            height: 40ex; 
             text-align: center; 
             border-style: solid; 
             border-width: thick; 
@@ -25,6 +25,11 @@
             right:0;
             margin:auto;
         }
+
+        .container-buttons {
+            display: flex;
+            justify-content: space-around;
+        }
     </style>
 </head>
 
@@ -32,7 +37,6 @@
 =======
 <body style="background-color: rgb(213, 236, 255); text-align: center; align-items: center; justify-content: center;">
 >>>>>>> 5d41cd67789f860774f084c8a534a2bd61037973
-    <h1>This is the index page!</h1>
     {% if user.is_authenticated %}
     <h2> Your name is: {{ user.username }}</h2>
     <button><a href="/logout">Logout</a></button>
@@ -42,10 +46,12 @@
     <br><br><br><br><br><br>
     <div class="box">
         <br><br>
-        <h2 style="color: white; font-size: 30pt">You're not logged in</h2>
+        <h2 style="color: white; font-size: 35pt">You're not logged in</h2>
         <br><br><br>
-        <button style="min-width: 30ex; min-height: 10ex; border-style: solid; border-width: thin; border-radius: 20px; border-color: rgb(3, 3, 29);"><a href="register" style="color: #444147; font-size: 20pt">Register</a></button>
-        <button style="min-width: 30ex; min-height: 10ex; border-style: solid; border-width: thin; border-radius: 20px; border-color: rgb(3, 3, 29);" type="button" class="btn btn-light"><a href="login" style="color: #444147; font-size: 20pt">Log In</a></button>
+        <div class="container-buttons"">
+            <button style="min-width: 30ex; min-height: 10ex; border-style: solid; border-width: thin; border-radius: 20px; border-color: rgb(3, 3, 29);"><a href="register" style="color: #444147; font-size: 20pt">Register</a></button>
+            <button style="min-width: 30ex; min-height: 10ex; border-style: solid; border-width: thin; border-radius: 20px; border-color: rgb(3, 3, 29);" type="button" class="btn btn-light"><a href="login" style="color: #444147; font-size: 20pt">Log In</a></button>
+        </div>
     </div>
 
     {% endif %}
