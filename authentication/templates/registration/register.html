@@ -4,35 +4,65 @@
 {% block content %}
 
 <style>
-.main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-.register {
-    background-color: #3B2E84;
-    width: 90ex; 
-    height: 50ex; 
-    text-align: center; 
-    border-style: solid; 
-    border-width: thick; 
-    border-radius: 20px; 
-    border-color: rgb(51, 51, 51);
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    margin:auto;
-}
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .register {
+        background-color: #3B2E84;
+        width: 90ex; 
+        height: 50ex; 
+        text-align: center; 
+        border-style: solid; 
+        border-width: thick; 
+        border-radius: 20px; 
+        border-color: rgb(51, 51, 51);
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        margin:auto;
+    }
+    .box {
+        background-color: #212529;
+        width: 70ex; 
+        height: 53ex; 
+        text-align: center; 
+        border-style: solid; 
+        border-width: thick; 
+        border-radius: 50px; 
+        border-color: rgb(51, 51, 51);
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        margin:auto;
+    }
+
+    .container-buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .buttons {
+        min-width: 19ex;
+        min-height: 7ex; 
+        border-style: solid; 
+        border-width: thin; 
+        border-radius: 20px; 
+        border-color: rgb(3, 3, 29);
+    }
 </style>
 
-<div class='register'>
+<div class='box'>
 
 <form method="post" action="{% url 'register' %}">
-<h2>Sign up</h2>
+<h2  style="color: #FFFFFF">Sign up</h2>
 
 {% include 'snippets/messages.html' %}
 

@@ -21,7 +21,7 @@ Login
     .login {
         background-color: #3B2E84;
         width: 90ex; 
-        height: 50ex; 
+        height: 55ex; 
         text-align: center; 
         border-style: solid; 
         border-width: thick; 
@@ -34,18 +34,48 @@ Login
         right:0;
         margin:auto;
     }
-    </style>
+    .box {
+        background-color: #212529;
+        width: 70ex; 
+        height: 53ex; 
+        text-align: center; 
+        border-style: solid; 
+        border-width: thick; 
+        border-radius: 50px; 
+        border-color: rgb(51, 51, 51);
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        margin:auto;
+    }
 
-<div class='login row'>
-    
-    <h2>Log in</h2>
+    .container-buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .buttons {
+        min-width: 19ex;
+        min-height: 7ex; 
+        border-style: solid; 
+        border-width: thin; 
+        border-radius: 20px; 
+        border-color: rgb(3, 3, 29);
+    }
+</style>
+
+<div class='box'>
+    <br>
+    <h2 style="color: #FFFFFF">Log in</h2>
     <form action="{% url 'login' %}" method="post">
         {% include 'snippets/messages.html' %}
 
         {% csrf_token %}
         {% for field in form %}
             <div class="fieldWrapper">
-                {{ field.label_tag }}<br>
+                {{ field.label_tag }}<br>]
                 {{ field }}
 
                 {% for error in field.errors %}
@@ -59,15 +89,16 @@ Login
             <p style="color: red">Your email and password didn't match. Please try again.</p>
         {% endif %}
 
-        <button type="submit">Log in</button>
-        <button type="submit">
+        <button type="submit" class="buttons">Log in</button>
+
+        <button type="submit" class="buttons">
             <a style="color: inherit; text-decoration: none;" href="/register">Register</a>
         </button><br><br>
 
-        <h5>
+        <h5 style="color: #FFFFFF; font-size: 18pt">
             Forgot your password?
         </h5>
-        <button type="submit">
+        <button type="submit" class="buttons">
             <a style="color: inherit; text-decoration: none;" href="../password_reset">Reset Password</a>
         </button>
     </form>
