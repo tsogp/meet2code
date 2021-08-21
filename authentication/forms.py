@@ -11,9 +11,11 @@ class RegistrationForm(UserCreationForm):
         model = Account
         fields = ("email", "username", "password1", "password2")
 
+
 class LoginForm(forms.Form):
     email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
 
 class UserPasswordResetForm(SetPasswordForm):
     """Change password form."""
