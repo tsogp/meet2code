@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'channels',
     'authentication',
     'home',
+    'projects',
     
     # default
     'django.contrib.admin',

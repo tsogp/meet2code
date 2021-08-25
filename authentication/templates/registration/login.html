@@ -76,7 +76,7 @@ Login
         {% for field in form %}
             <div class="fieldWrapper" style="width: 50ex; margin-left: auto; margin-right: auto;">
                 {{ field.label_tag }}<br>
-                {% render_field form.email class="input form-control" placeholder=field.label %}
+                {% render_field field class="input form-control" placeholder=field.label %}
 
                 {% for error in field.errors %}
                     <p style="color: red;">{{ error }}</p>

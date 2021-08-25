@@ -116,3 +116,7 @@ def activate_user(request, uidb64, token):
         return render(request, 'registration/login.html')
     
     return render(request, 'registration/activate-failed.html', {"user": user})
+
+def profile_view(request):
+    context = {}
+    return render(request, 'account/profile_page.html', context)

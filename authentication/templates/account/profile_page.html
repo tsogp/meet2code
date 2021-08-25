@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br><br>
+{% if user.is_authenticated %}
+    <p>{{ user.username }}</p>
+
+    {% if user.vk != '' %}
+        <p>{{ user.vk }}</p>
+    {% endif %}
+
+    {% if user.telegram != '' %}
+        <p>{{ user.telegram }}</p>
+    {% endif %}
+
+    {% if user.discord != '' %}
+        <p>{{ user.discord }}</p>
+    {% endif %}
+
+    {% if not user.hide_email %}
+        <p>{{ user.email }}</p>
+    {% endif %}
+
+{% endif %}
+
+{% endblock %}
